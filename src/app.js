@@ -23,10 +23,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/products", (req, res) => {
+app.get("/products", async (req, res) => {
   try {
     const { limit } = req.query;
-    let products = readProductsFromFile();
+    let products = await readProductsFromFile();
 
     if (limit && !isNaN(parseInt(limit, 10))) {
       const limitNumber = parseInt(limit, 10);
@@ -42,7 +42,7 @@ app.get("/products", (req, res) => {
 app.get("/products/:pid", async (req, res) => {
   try {
     const productId = req.params.pid;
-    const products = readProductsFromFile();
+    const products = await readProductsFromFile();
 
     const product = products.find((p) => p.id === parseInt(productId, 10));
 
