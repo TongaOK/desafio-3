@@ -39,8 +39,10 @@ class ProductManager {
     const productById = products.find((p) => p.id === id);
     if (!productById) {
       console.log("Product not found");
+      return null;
     } else {
       console.log("Product found", productById);
+      return productById;
     }
   }
 
@@ -53,27 +55,44 @@ class ProductManager {
     newStock,
     id
   ) {
-    const products = await getJSONFromFile(this.path);
-    let ProdId = products.some((p) => p.id === id);
-    if (!ProdId) {
-      console.log(`updateProduct: Product not found, id: ${id}`);
-    } else {
-      const updatedProducts = products.map((p) => {
-        if (p.id === id) {
-          return {
-            title: newTitle,
-            description: newDescription,
-            price: newPrice,
-            thumbnail: newThumbnail,
-            code: newCode,
-            stock: newStock,
-            id: id,
-          };
-        }
-        return p;
-      });
-      await saveJSONToFile(this.path, updatedProducts);
-      console.log("Lista actualizada correctamente", updatedProducts);
+    try {
+      if (
+        !newTitle ||
+        !newDescription ||
+        !newPrice ||
+        !newThumbnail ||
+        !newCode ||
+        !newStock ||
+        !id
+      ) {
+        throw new Error(
+          "Todos los campos son obligatorios para actualizar el producto."
+        );
+      }
+
+      const products = await getJSONFromFile(this.path);
+      const index = products.findIndex((p) => p.id === id);
+
+      if (index === -1) {
+        return { error: `Producto no encontrado, ID: ${id}` };
+      } else {
+        products[index] = {
+          title: newTitle,
+          description: newDescription,
+          price: newPrice,
+          thumbnail: newThumbnail,
+          code: newCode,
+          stock: newStock,
+          id: id,
+        };
+
+        await saveJSONToFile(this.path, products);
+
+        return products[index];
+      }
+    } catch (error) {
+      console.error(error);
+      return { error: "Ocurrió un error al actualizar el producto." };
     }
   }
 
@@ -169,10 +188,10 @@ const desafio = async () => {
     const productId = 2;
     await productManager.getProductById(productId);
 
-    await productManager.deleteProduct(productId);
+    // await productManager.deleteProduct(productId);
 
     await productManager.updateProduct(
-      "Motosierra",
+      "Motosierrap",
       "Herramienta cortante",
       "12000",
       "*",
