@@ -146,10 +146,10 @@ const saveJSONToFile = async (path, data) => {
     throw new Error(`El archivo ${path} no pudo ser escrito.`);
   }
 };
+const productManager = new ProductManager("./products.json");
 
 const desafio = async () => {
   try {
-    const productManager = new ProductManager("./products.json");
     await productManager.addProduct({
       title: "Martillo",
       description: "Herramienta contundente",
@@ -206,4 +206,7 @@ const desafio = async () => {
 
 desafio();
 
-module.exports = ProductManager;
+module.exports = {
+  ProductManager,
+  productManager,
+};

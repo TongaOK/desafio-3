@@ -1,23 +1,12 @@
 const fs = require("fs");
 const express = require("express");
-const ProductManager = require("./ProductManager");
-const productos = new ProductManager();
+const { productManager } = require("./ProductManager");
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const port = 3000;
-
-function readProductsFromFile() {
-  try {
-    const data = fs.readFileSync("products.json", "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error al leer el archivo products.json:", error);
-    return [];
-  }
-}
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -26,7 +15,9 @@ app.get("/", (req, res) => {
 app.get("/products", async (req, res) => {
   try {
     const { limit } = req.query;
-    let products = await readProductsFromFile();
+    console.log("Solicitud GET a /products recibida");
+    let products = await productManager.getProducts();
+    console.log(products);
 
     if (limit && !isNaN(parseInt(limit, 10))) {
       const limitNumber = parseInt(limit, 10);
@@ -42,9 +33,7 @@ app.get("/products", async (req, res) => {
 app.get("/products/:pid", async (req, res) => {
   try {
     const productId = req.params.pid;
-    const products = await readProductsFromFile();
-
-    const product = products.find((p) => p.id === parseInt(productId, 10));
+    const product = await productManager.getProductById(parseInt(productId));
 
     if (!product) {
       res.status(404).json({ error: "Producto no encontrado" });
