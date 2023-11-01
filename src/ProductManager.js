@@ -1,4 +1,8 @@
 const fs = require("fs");
+const path = require("path");
+const currentDir = __dirname;
+const fileName = "./products.json"
+const url = path.join(currentDir, fileName);
 
 class ProductManager {
   constructor(path) {
@@ -146,7 +150,7 @@ const saveJSONToFile = async (path, data) => {
     throw new Error(`El archivo ${path} no pudo ser escrito.`);
   }
 };
-const productManager = new ProductManager("./products.json");
+const productManager = new ProductManager(url);
 
 const desafio = async () => {
   try {
@@ -179,26 +183,59 @@ const desafio = async () => {
       description: "Herramienta cortante",
       price: "950",
       thumbnail: "*",
-      code: "1",
+      code: "4",
       stock: "4",
+    });
+    await productManager.addProduct({
+      title: "Motosierra",
+      description: "Herramienta cortante",
+      price: "750",
+      thumbnail: "*",
+      code: "5",
+      stock: "3",
+    });
+    await productManager.addProduct({
+      title: "Hoz",
+      description: "Herramienta cortante",
+      price: "750",
+      thumbnail: "*",
+      code: "6",
+      stock: "3",
+    });
+    await productManager.addProduct({
+      title: "Cuchillo",
+      description: "Herramienta cortante",
+      price: "750",
+      thumbnail: "*",
+      code: "7",
+      stock: "3",
+    });
+    await productManager.addProduct({
+      title: "Presinto",
+      description: "Varias medidas",
+      price: "750",
+      thumbnail: "*",
+      code: "8",
+      stock: "3",
+    });
+    await productManager.addProduct({
+      title: "Enduido",
+      description: "Reparar paredes",
+      price: "750",
+      thumbnail: "*",
+      code: "9",
+      stock: "3",
+    });
+    await productManager.addProduct({
+      title: "Espatula",
+      description: "Espatula",
+      price: "750",
+      thumbnail: "*",
+      code: "10",
+      stock: "3",
     });
     const products = await productManager.getProducts();
     console.log("Acá los productos:", products);
-
-    const productId = 2;
-    await productManager.getProductById(productId);
-
-    // await productManager.deleteProduct(productId);
-
-    await productManager.updateProduct(
-      "Motosierrap",
-      "Herramienta cortante",
-      "12000",
-      "*",
-      "1",
-      "5",
-      1
-    );
   } catch (error) {
     console.error(" Ha ocurrido un error: ", error.message);
   }
@@ -208,5 +245,4 @@ desafio();
 
 module.exports = {
   ProductManager,
-  productManager,
 };

@@ -25,5 +25,68 @@
 		"code": "3",
 		"stock": "5",
 		"id": 3
+	},
+	{
+		"title": "Pinzas",
+		"description": "Herramienta cortante",
+		"price": "950",
+		"thumbnail": "*",
+		"code": "4",
+		"stock": "4",
+		"id": 1
+	},
+	{
+		"title": "Motosierra",
+		"description": "Herramienta cortante",
+		"price": "750",
+		"thumbnail": "*",
+		"code": "5",
+		"stock": "3",
+		"id": 2
+	},
+	{
+		"title": "Hoz",
+		"description": "Herramienta cortante",
+		"price": "750",
+		"thumbnail": "*",
+		"code": "6",
+		"stock": "3",
+		"id": 3
+	},
+	{
+		"title": "Cuchillo",
+		"description": "Herramienta cortante",
+		"price": "750",
+		"thumbnail": "*",
+		"code": "7",
+		"stock": "3",
+		"id": 4
+	},
+	{
+		"title": "Presinto",
+		"description": "Varias medidas",
+		"price": "750",
+		"thumbnail": "*",
+		"code": "8",
+		"stock": "3",
+		"id": 5
+	},
+	{
+		"title": "Enduido",
+		"description": "Reparar paredes",
+		"price": "750",
+		"thumbnail": "*",
+		"code": "9",
+		"stock": "3",
+		"id": 6
+	},
+	{
+		"title": "Espatula",
+		"description": "Espatula",
+		"price": "750",
+		"thumbnail": "*",
+		"code": "10",
+		"stock": "3",
+		"id": 7
 	}
 ]
