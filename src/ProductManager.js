@@ -243,6 +243,4 @@ const desafio = async () => {
 
 desafio();
 
-module.exports = {
-  ProductManager,
-};
+module.exports = {ProductManager, productManager};

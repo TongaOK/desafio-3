@@ -1,8 +1,8 @@
 [
 	{
-		"title": "Motosierrap",
-		"description": "Herramienta cortante",
-		"price": "12000",
+		"title": "Martillo",
+		"description": "Herramienta contundente",
+		"price": "1500",
 		"thumbnail": "*",
 		"code": "1",
 		"stock": "5",
@@ -33,7 +33,7 @@
 		"thumbnail": "*",
 		"code": "4",
 		"stock": "4",
-		"id": 1
+		"id": 4
 	},
 	{
 		"title": "Motosierra",
@@ -42,7 +42,7 @@
 		"thumbnail": "*",
 		"code": "5",
 		"stock": "3",
-		"id": 2
+		"id": 5
 	},
 	{
 		"title": "Hoz",
@@ -51,7 +51,7 @@
 		"thumbnail": "*",
 		"code": "6",
 		"stock": "3",
-		"id": 3
+		"id": 6
 	},
 	{
 		"title": "Cuchillo",
@@ -60,7 +60,7 @@
 		"thumbnail": "*",
 		"code": "7",
 		"stock": "3",
-		"id": 4
+		"id": 7
 	},
 	{
 		"title": "Presinto",
@@ -69,7 +69,7 @@
 		"thumbnail": "*",
 		"code": "8",
 		"stock": "3",
-		"id": 5
+		"id": 8
 	},
 	{
 		"title": "Enduido",
@@ -78,7 +78,7 @@
 		"thumbnail": "*",
 		"code": "9",
 		"stock": "3",
-		"id": 6
+		"id": 9
 	},
 	{
 		"title": "Espatula",
@@ -87,6 +87,6 @@
 		"thumbnail": "*",
 		"code": "10",
 		"stock": "3",
-		"id": 7
+		"id": 10
 	}
 ]
